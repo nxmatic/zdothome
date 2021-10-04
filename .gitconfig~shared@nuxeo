@@ -1,0 +1,10 @@
+[git-bug "bridge.jira-nxs"]
+	target = jira
+	base-url = https://jira.nuxeo.com
+	project = NXS
+	bug-id-map = { \"open\": \"1\", \"closed\": \"5\" }
+	bug-id-revmap = { \"1\": \"Open\",\"5\": \"Closed\",\"6\": \"Closed\",\"10017\": \"Open\",\"4\": \"Open\",\"10028\": \"Open\",\"3\": \"Open\",\"10030\": \"Open\"}
+	labels-id = customfield_10080
+	filter = Tags in (nxnos) AND  (status = \"TO DO\" OR status = \"IN PROGRESS\") AND (assignee = slacoin)
+	create-issue-defaults = {\"issuetype\": { \"id\":\"3\"},\"customfield_10080\":[\"nxnos\"],\"components\":[{ \"id\": \"17211\"}]}
+

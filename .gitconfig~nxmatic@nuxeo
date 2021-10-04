@@ -1,0 +1,7 @@
+[user]
+	email = slacoin@nuxeo.com
+
+[git-bug "bridge.jira-nxs"]
+	default-login = slacoin
+	credentials-type = SESSION
+
