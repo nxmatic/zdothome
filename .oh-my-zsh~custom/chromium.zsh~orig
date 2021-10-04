@@ -1,0 +1,3 @@
+declare -x GOOGLE_API_KEY=$(pass show google/chromium| yq read - gcloud.api.key)
+declare -x GOOGLE_DEFAULT_CLIENT_ID=$(pass show google/chromium| yq read - gcloud.oauth.id)
+declare -x GOOGLE_DEFAULT_CLIENT_SECRET=$(pass show google/chromium| yq read - gcloud.oauth.secret)
