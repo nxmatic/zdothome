@@ -6,8 +6,6 @@ alias dtfsh="env PS1=\"dtfsh> \" GIT_WORK_TREE=\"\$DOTFILES\" GIT_DIR=\"\$DOTFIL
 
 [ -n "$DOTFILES" ] && return
 
-set -x
-
 export DOTFILES=$(realpath $HOME)
 
 if [ -h /bin/ls ] && expr "$(readlink /bin/ls)" = '/bin/busybox' > /dev/null; then
@@ -35,5 +33,3 @@ else
     git pull --rebase
 fi
 EOF
-
-set +x
