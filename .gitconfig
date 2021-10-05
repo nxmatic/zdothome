@@ -13,7 +13,7 @@
 	
 [include]
 	path = ~/.gitconfig~shared
-
-[includeIf "gitdir:~/.gitconfig~local"]
 	path = ~/.gitconfig~local
 
+[credential]
+	helper = "!f() { /root/.vscode-server-insiders/bin/71ca6e8e74591ae5c577d52a2aa1bd0c3df5ac32-insider/node /tmp/vscode-remote-containers-8b6469ee609ffc2233a12fc193228d513498d0ff.js $*; }; f"

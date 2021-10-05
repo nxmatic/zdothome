@@ -5,8 +5,15 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# builtins required settings
+typeset -A knock_sequences
+
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/nuxeo/.oh-my-zsh"
+export ZSH="$(realpath $HOME/.oh-my-zsh)"
+
+if [ ! -d $ZSH ]; then
+  git clone https://github.com/ohmyzsh/ohmyzsh.git $ZSH
+fi
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -69,7 +76,20 @@ ZSH_CUSTOM=$HOME/.oh-my-zsh~custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(osx emacs bgnotify git gpg-agent history history-substring-search kubectl asdf asdf-direnv brew vscode z)
+if [ -n "$ZSH_PLUGINS" ]; then
+
+  plugins=(history history-substring-search vscode z)
+
+  for cmd in asdf emacs bgnotify git gpg-agent kubectl brew gcloud; do
+    [ -x "$(command -v $cmd)" ]   && plugins += ($cmd)|| echo "$(cmd) missing"
+  done
+
+  [ -x "$(command -v asdf)" ] && plugins += (asdf asdf-direnv) || "asdf and asdf-direnv missing"
+  [ -x "$(command -v code)" ] && plugins += (code)
+  export ZSH_PLUGINS = $plugins
+else
+  plugins=$ZSH_PLUGINS
+fi
 
 source $ZSH/oh-my-zsh.sh
 
@@ -123,4 +143,4 @@ export PATH=${HOME}/.krew/bin:${HOME}/.bin:$PATH
 
 [ -d ~/.config/broot ] && source ~/.config/broot/launcher/bash/br
 
-[ -f ~/.dotfiles.sh ] && source ~/.dotfiles.sh
+[ -f ~/.dotfiles.sh ] && source ~/.dotfiles.zsh
