@@ -77,7 +77,8 @@ ZSH_CUSTOM=$HOME/.oh-my-zsh~custom
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 if [ -n "$ZSH_PLUGINS" ]; then
-
+  plugins=$ZSH_PLUGINS
+else
   plugins=(history history-substring-search vscode z)
 
   for cmd in asdf emacs bgnotify git gpg-agent kubectl brew gcloud; do
@@ -86,9 +87,8 @@ if [ -n "$ZSH_PLUGINS" ]; then
 
   [ -x "$(command -v asdf)" ] && plugins += (asdf asdf-direnv) || "asdf and asdf-direnv missing"
   [ -x "$(command -v code)" ] && plugins += (code)
+
   export ZSH_PLUGINS = $plugins
-else
-  plugins=$ZSH_PLUGINS
 fi
 
 source $ZSH/oh-my-zsh.sh
@@ -143,4 +143,4 @@ export PATH=${HOME}/.krew/bin:${HOME}/.bin:$PATH
 
 [ -d ~/.config/broot ] && source ~/.config/broot/launcher/bash/br
 
-[ -f ~/.dotfiles.sh ] && source ~/.dotfiles.zsh
+[ -f ~/.dotfiles.zsh ] && source ~/.dotfiles.zsh

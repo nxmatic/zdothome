@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 
-set -x
-
 # Installation script (Bash) for https://github.com/nxmatic/dotfiles
 
 [ -n "$DOTFILES" ] && return
+
+set -x
 
 export DOTFILES=$(realpath $HOME)
 
