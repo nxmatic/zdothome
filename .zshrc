@@ -1,3 +1,6 @@
+# Synchronize dotfiles at first
+[ -f ~/.dotfiles.zsh ] && source ~/.dotfiles.zsh
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -5,8 +8,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# builtins required settings
-typeset -A knock_sequences
 
 # Path to your oh-my-zsh installation.
 export ZSH="$(realpath $HOME/.oh-my-zsh)"
@@ -16,7 +17,6 @@ if [ ! -d $ZSH ]; then
 fi
 
 # set vscode insider as preferred
-
 VSCODE=code-insiders
 
 # Set name of the theme to load --- if set to "random", it will
@@ -148,4 +148,3 @@ export PATH=${HOME}/.krew/bin:${HOME}/.bin:$PATH
 
 [ -d ~/.config/broot ] && source ~/.config/broot/launcher/bash/br
 
-[ -f ~/.dotfiles.zsh ] && source ~/.dotfiles.zsh
