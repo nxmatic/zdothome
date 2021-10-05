@@ -15,6 +15,10 @@ if [ ! -d $ZSH ]; then
   git clone https://github.com/ohmyzsh/ohmyzsh.git $ZSH
 fi
 
+# set vscode insider as preferred
+
+VSCODE=code-insiders
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -79,16 +83,17 @@ ZSH_CUSTOM=$HOME/.oh-my-zsh~custom
 if [ -n "$ZSH_PLUGINS" ]; then
   plugins=$ZSH_PLUGINS
 else
-  plugins=(history history-substring-search vscode z)
-
+  plugins=(history history-substring-search vscode z zsh-dircolors-solarized)
   for cmd in asdf emacs bgnotify git gpg-agent kubectl brew gcloud; do
-    [ -x "$(command -v $cmd)" ]   && plugins += ($cmd)|| echo "$(cmd) missing"
+    if [ -x "$(command -v $cmd)" ]; then
+       plugins+=($cmd)
+    else
+      echo "$cmd missing"
+    fi
   done
+  [ -x "$(command -v asdf)" ] && plugins+=(asdf asdf-direnv asdf-java)
 
-  [ -x "$(command -v asdf)" ] && plugins += (asdf asdf-direnv) || "asdf and asdf-direnv missing"
-  [ -x "$(command -v code)" ] && plugins += (code)
-
-  export ZSH_PLUGINS = $plugins
+  export ZSH_PLUGINS=$plugins
 fi
 
 source $ZSH/oh-my-zsh.sh
