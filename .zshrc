@@ -80,21 +80,15 @@ ZSH_CUSTOM=$HOME/.oh-my-zsh~custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-if [ -n "$ZSH_PLUGINS" ]; then
-  plugins=$ZSH_PLUGINS
-else
-  plugins=(history history-substring-search vscode z zsh-dircolors-solarized)
-  for cmd in asdf emacs bgnotify git gpg-agent kubectl brew gcloud; do
-    if [ -x "$(command -v $cmd)" ]; then
-       plugins+=($cmd)
-    else
-      echo "$cmd missing"
-    fi
-  done
-  [ -x "$(command -v asdf)" ] && plugins+=(asdf asdf-direnv asdf-java)
-
-  export ZSH_PLUGINS=$plugins
-fi
+plugins=(history history-substring-search vscode z zsh-dircolors-solarized)
+for cmd in asdf emacs bgnotify git gpg-agent kubectl brew gcloud; do
+  if [ -x "$(command -v $cmd)" ]; then
+     plugins+=($cmd)
+  else
+    echo "$cmd missing"
+  fi
+done
+[ -x "$(command -v asdf)" ] && plugins+=(asdf asdf-direnv asdf-java)
 
 source $ZSH/oh-my-zsh.sh
 
