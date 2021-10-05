@@ -62,14 +62,14 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+ZSH_CUSTOM=$HOME/.oh-my-zsh~custom
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(osx emacs bgnotify git gpg-agent history history-substring-search kubectl asdf asdf-direnv brew vscode z zsh-dircolors-solarized)
+plugins=(osx emacs bgnotify git gpg-agent history history-substring-search kubectl asdf asdf-direnv brew vscode z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -116,13 +116,11 @@ export PATH=${HOME}/.krew/bin:${HOME}/.bin:$PATH
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-#export SDKMAN_DIR="/Users/nuxeo/.sdkman"
-#[[ -s "/Users/nuxeo/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/nuxeo/.sdkman/bin/sdkman-init.sh"
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-source /Users/nuxeo/.config/broot/launcher/bash/br
+[ -d ~/.config/broot ] && source ~/.config/broot/launcher/bash/br
+
+[ -f ~/.dotfiles.sh ] && source ~/.dotfiles.sh
