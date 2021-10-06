@@ -1,7 +1,8 @@
-# Synchronize dotfiles at first
-[ -f ~/.dotfiles.zsh ] && source ~/.dotfiles.zsh
+if [ -f ${DOTFILES:=$(dirname $(realpath ${(%):-%N}))}/.dotfiles.zsh ]; then
+  source ${DOTFILES}/.dotfiles.zsh
+fi
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ${DOTFILES-~}/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -10,7 +11,7 @@ fi
 
 
 # Path to your oh-my-zsh installation.
-export ZSH="$(realpath $HOME/.oh-my-zsh)"
+export ZSH="${DOTFILES-~}/.oh-my-zsh"
 
 if [ ! -d $ZSH ]; then
   git clone https://github.com/ohmyzsh/ohmyzsh.git $ZSH
@@ -27,7 +28,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# a theme from this variable instead of looking in ${DOTFILES-~}/.oh-my-zsh/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
@@ -73,15 +74,16 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-ZSH_CUSTOM=$HOME/.oh-my-zsh~custom
+ZSH_CUSTOM=$DOTFILES/.oh-my-zsh~custom
 
 # Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Standard plugins can be found in ${DOTFILES-~}/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ${DOTFILES-~}/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(history history-substring-search vscode z zsh-dircolors-solarized)
-for cmd in asdf emacs bgnotify git gpg-agent kubectl brew gcloud; do
+plugins=(history history-substring-search z zsh-dircolors-solarized)
+plugins+=(vscode gcloud)
+for cmd in asdf emacs bgnotify git gpg-agent kubectl brew; do
   if [ -x "$(command -v $cmd)" ]; then
      plugins+=($cmd)
   else
@@ -131,14 +133,13 @@ export PATH=${HOME}/.krew/bin:${HOME}/.bin:$PATH
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+if [ -n "$VSCODE" -a "$VSCODE" = "code-insiders" ]; then
+    alias code="code-insiders"
+fi
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# To customize prompt, run `p10k configure` or edit ${DOTFILES-~}/.p10k.zsh.
+[ ! -f ${DOTFILES}/.p10k.zsh ] || source ${DOTFILES}/.p10k.zsh
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ${DOTFILES}/.fzf.zsh ] && source ${DOTFILES}/.fzf.zsh
 
-[ -d ~/.config/broot ] && source ~/.config/broot/launcher/bash/br
-
+[ -d $XDG_RUNTIME_DIR/*broot ] && source $XDG_RUNTIME_DIR/*broot/launcher/bash/1

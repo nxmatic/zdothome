@@ -4,22 +4,23 @@ alias dtfsh="env PS1=\"dtfsh> \" GIT_WORK_TREE=\"\$DOTFILES\" GIT_DIR=\"\$DOTFIL
 
 # Installation script (Bash) for https://github.com/nxmatic/dotfiles
 
-[ -n "$DOTFILES" ] && return
-
-export DOTFILES=$(realpath $HOME)
-
-if [ -h /bin/ls ] && expr "$(readlink /bin/ls)" = '/bin/busybox' > /dev/null; then
-    apk add coreutils
-    [ -x /usr/bin/rsync ] || apk add rsync
+if [ -z "$DOTFILES" ]; then
+    if [ -h /bin/ls ] && expr "$(readlink /bin/ls)" = '/bin/busybox' > /dev/null; then
+        apk add coreutils
+        [ -x /usr/bin/rsync ] || apk add rsync
+    fi
+    export DOTFILES=$(realpath ${HOME})
 fi
 
 setopt aliases
 
-dtfsh -x <<EOF
+# TODO: giconfigure sparse checkout based on os/flavors
+
+dtfsh <<EOF
 if [ ! -d "\$GIT_DIR" ]; then
     tmpfile=\$(mktemp -d $(basename $0).XXXXX) # && trap 0 "rm -fr \$tmpfile"
 
-    git clone --quiet --bare https://github.com/nxmatic/dotfiles "\$GIT_DIR" && git checkout
+    git clone --quiet --bare https://github.com/nxmatic/dotfiles "\$GIT_DIR" 
     git ls-tree -r HEAD | awk '{print \$NF}' > \$tmpfile/ls-tree
     
     rsync -av --files-from=\$tmpfile/ls-tree \$GIT_WORK_TREE \$tmpfile 2>/dev/null || true
@@ -30,6 +31,6 @@ if [ ! -d "\$GIT_DIR" ]; then
     git checkout
     rsync -av --files-from=\$tmpfile/ls-tree \$tmpfile \$GIT_WORK_TREE 2>/dev/null || true
 else
-    git pull --rebase
+    git fetch
 fi
 EOF
