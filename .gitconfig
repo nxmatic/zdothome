@@ -16,4 +16,4 @@
 	path = ~/.gitconfig~local
 
 [credential]
-	helper = "!f() { /root/.vscode-server-insiders/bin/71ca6e8e74591ae5c577d52a2aa1bd0c3df5ac32-insider/node /tmp/vscode-remote-containers-8b6469ee609ffc2233a12fc193228d513498d0ff.js $*; }; f"
+	helper = "!f() { /root/.vscode-server-insiders/bin/0dae77d06e33eaf1616cc1a53d77e717b284a626-insider/node /tmp/vscode-remote-containers-3a851d4215e06fd83c16d5723f48fd9b4be98827.js $*; }; f"
