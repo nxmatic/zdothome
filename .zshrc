@@ -96,8 +96,6 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export TERM=screen-256color
-
 export USER_EMACS_DIRECTORY=.emacs.d/userland
 
 export GROOVY_HOME=/usr/local/opt/groovy/libexec
@@ -135,6 +133,7 @@ export PATH=${HOME}/.krew/bin:${HOME}/.bin:$PATH
 #
 if [ -n "$VSCODE" -a "$VSCODE" = "code-insiders" ]; then
     alias code="code-insiders"
+    alias devcontainer="devcontainer-insiders"
 fi
 
 # To customize prompt, run `p10k configure` or edit ${DOTFILES-~}/.p10k.zsh.
@@ -142,4 +141,4 @@ fi
 
 [ -f ${DOTFILES}/.fzf.zsh ] && source ${DOTFILES}/.fzf.zsh
 
-[ -d $XDG_RUNTIME_DIR/*broot ] && source $XDG_RUNTIME_DIR/*broot/launcher/bash/1
+[ -d $XDG_RUNTIME_DIR/org.dystroy.broot ] && source $XDG_RUNTIME_DIR/org.dystroy.broot/launcher/bash/1
