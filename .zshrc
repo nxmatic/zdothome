@@ -90,7 +90,11 @@ for cmd in asdf emacs bgnotify git gpg-agent kubectl brew; do
     echo "$cmd missing"
   fi
 done
-[ -x "$(command -v asdf)" ] && plugins+=(asdf asdf-direnv asdf-java)
+if [ -x "$(command -v asdf)" ]; then
+  plugins+=(asdf asdf-direnv asdf-java)
+else
+  [ -x "$(command -v direnv)" ] && plugins+=direnv
+fi
 
 source $ZSH/oh-my-zsh.sh
 
