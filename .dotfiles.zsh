@@ -18,14 +18,14 @@ setopt aliases
 
 dtfsh <<EOF
 if [ ! -d "\$GIT_DIR" ]; then
-    tmpfile=\$(mktemp -d $(basename $0).XXXXX) # && trap 0 "rm -fr \$tmpfile"
+    tmpfile=\$(mktemp -d $(basename $0).XXXXX) && trap 0 "rm -fr \$tmpfile"
 
     git clone --quiet --bare https://github.com/nxmatic/dotfiles "\$GIT_DIR" 
     git ls-tree -r HEAD | awk '{print \$NF}' > \$tmpfile/ls-tree
     
     rsync -av --files-from=\$tmpfile/ls-tree \$GIT_WORK_TREE \$tmpfile 2>/dev/null || true
     
-    xargs rm -f < \$tmpfile/ls-tree
+    (cd \$GIT_WORK_TREE && xargs rm -f < \$tmpfile/ls-tree)
 
     git config status.showUntrackedFiles no
     git checkout
