@@ -1,0 +1,5 @@
+set -a
+DOCKER_HOST=tcp://host.docker.internal:2375
+HOST_DOCKER_INTERNAL=192.168.64.5
+HOST_K3S_INTERNAL=192.168.64.5
+set +a
