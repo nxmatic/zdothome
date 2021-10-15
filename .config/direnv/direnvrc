@@ -1,7 +1,7 @@
-source_env_if_exists() {
-  local file=${BASH_SOURCE}~${1}
+source_if_exists() {
+  local file=${1}
   [ ! -f ${file} ] && return
-  source_env ${file}
+  source ${file}
 }
 
 direnv_layout_dir() {
@@ -14,8 +14,8 @@ function path() {
  echo $1:$PATH | awk -v RS=: '!($0 in a) {a[$0]; printf("%s%s", length(a) > 1 ? ":" : "", $0)}'
 }
 
-source_env_if_exists ${BASH_SOURCE}~$(uname)
-source_env_if_exists ${BASH_SOURCE}~$(hostname)
+source_if_exists ${BASH_SOURCE}~$(uname)
+source_if_exists ${BASH_SOURCE}~$(hostname)
 
 source ${BASH_SOURCE}~asdf
 source ${BASH_SOURCE}~golang
