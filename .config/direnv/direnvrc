@@ -1,0 +1,24 @@
+source_env_if_exists() {
+  local file=${BASH_SOURCE}~${1}
+  [ ! -f ${file} ] && return
+  source_env ${file}
+}
+
+direnv_layout_dir() {
+  local pwd_hash
+  pwd_hash=$(basename "$PWD")-$(echo -n "$PWD" | shasum | cut -d ' ' -f 1 | head -c 7)
+  echo "$XDG_CACHE_HOME/direnv/layouts/$pwd_hash"
+}
+
+function path() {
+ echo $1:$PATH | awk -v RS=: '!($0 in a) {a[$0]; printf("%s%s", length(a) > 1 ? ":" : "", $0)}'
+}
+
+source_env_if_exists ${BASH_SOURCE}~$(uname)
+source_env_if_exists ${BASH_SOURCE}~$(hostname)
+
+source ${BASH_SOURCE}~asdf
+source ${BASH_SOURCE}~golang
+source ${BASH_SOURCE}~krew
+source ${BASH_SOURCE}~pass
+

@@ -1,0 +1,10 @@
+: ${XDG_CONFIG_HOME:=${HOME}/.config}
+: ${XDG_CACHE_HOME:=${HOME}/.cache}
+: ${XDG_DATA_HOME:=${HOME}/.data}
+: ${XDG_STATE_HOME:=${HOME}/.var/run}
+: ${XDG_RUNTIME_HOME:=${HOME}/.var/run}
+
+mkdir -p ${XDG_RUNTIME_DIR} && chmod 700 ${XDG_RUNTIME_DIR}
+
+: $(TMPDIR=HOME:=${HOME}/.tmp)
+
