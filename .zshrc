@@ -151,5 +151,5 @@ fi
 
 [ -d ${XDG_RUNTIME_DIR}/org.dystroy.broot ] && source ${XDG_RUNTIME_DIR}/org.dystroy.broot/launcher/bash/1
 
-[ -f "${DOTFILES}/.zshrc~${os}" ] && source ${DOTFILES}~${OS}
+[ -f "${DOTFILES}/.zshrc~${os}" ] && source ${DOTFILES}/.zshrc~${os}
 [ -f "${DOTFILES}/.zshrc.$(hostname)" ] && source "${DOTFILES}/.zshrc.$(hostname)"
