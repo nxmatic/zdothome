@@ -1,0 +1,7 @@
+: ${XDG_CONFIG_HOME:=~/Library/Preferences}
+: ${XDG_CACHE_HOME:=~/Library/Caches}
+: ${XDG_DATA_HOME:=~/Library/ApplicationSupport}
+: ${XDG_STATE_HOME:=~/Library/Runtime}
+: ${XDG_RUNTIME_DIR:=~/Library/Runtime}
+
+mkdir -p ${XDG_RUNTIME_DIR} && chmod 700 ${XDG_RUNTIME_DIR}

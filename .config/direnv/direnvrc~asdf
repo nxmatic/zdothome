@@ -1,0 +1,5 @@
+[ -n "$(command -v asdf)" ] && return
+
+source "$(asdf direnv hook asdf)"
+
+source_env "$(asdf direnv _asdf_cached_envrc "$@")"

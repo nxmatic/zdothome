@@ -1,0 +1,3 @@
+[ ! -d $HOME/.krew/bin ] && return
+
+export PATH=$(path $HOME/.krew/bin)

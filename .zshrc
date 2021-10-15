@@ -1,4 +1,7 @@
-if [ -f ${DOTFILES:=$(dirname $(realpath ${(%):-%N}))}/.dotfiles.zsh ]; then
+: ${OS:=$(uname)}
+: ${DOTFILES:=$(dirname $(realpath ${(%):-%N}))}
+
+if [ -f ${DOTFILES}/.dotfiles.zsh ]; then
   source ${DOTFILES}/.dotfiles.zsh
 fi
 
@@ -135,16 +138,18 @@ export PATH=${HOME}/.krew/bin:${HOME}/.bin:$PATH
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
+# To customize prompt, run `p10k configure` or edit ${DOTFILES-~}/.p10k.zsh.
+
 if [ -n "$VSCODE" -a "$VSCODE" = "code-insiders" ]; then
     alias code="code-insiders"
     alias devcontainer="devcontainer-insiders"
 fi
 
-# To customize prompt, run `p10k configure` or edit ${DOTFILES-~}/.p10k.zsh.
 [ ! -f ${DOTFILES}/.p10k.zsh ] || source ${DOTFILES}/.p10k.zsh
 
 [ -f ${DOTFILES}/.fzf.zsh ] && source ${DOTFILES}/.fzf.zsh
 
 [ -d ${XDG_RUNTIME_DIR}/org.dystroy.broot ] && source ${XDG_RUNTIME_DIR}/org.dystroy.broot/launcher/bash/1
 
+[ -f "${DOTFILES}/.zshrc~${os}" ] && source ${DOTFILES}~${OS}
 [ -f "${DOTFILES}/.zshrc.$(hostname)" ] && source "${DOTFILES}/.zshrc.$(hostname)"
