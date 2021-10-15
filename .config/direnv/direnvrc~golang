@@ -1,7 +1,7 @@
 [ -z "$GOPATH" ] && return
 
 set -a
-PATH=$GOPATH:$PATH
+PATH=$(path $GOPATH)
 GOTMPDIR=$(dirname $GOROOT)/tmp
 GOCACHE=$(dirname $GOROOT)/cache
 GO111MODULE=on
