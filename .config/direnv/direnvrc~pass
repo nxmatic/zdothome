@@ -2,4 +2,3 @@
 
 source <(pass nuxeo/nexus/dot-envrc)
 source <(pass coding/github@nuxeo-token| tail +2 | yq eval .env -)
-
