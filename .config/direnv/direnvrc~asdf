@@ -1,4 +1,4 @@
-[ -n "$(command -v asdf)" ] && return
+[ -z "$(command -v asdf)" ] && return
 
 source "$(asdf direnv hook asdf)"
 
