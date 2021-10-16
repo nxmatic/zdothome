@@ -17,8 +17,7 @@ function path() {
 source_if_exists ${BASH_SOURCE}~$(uname)
 source_if_exists ${BASH_SOURCE}~$(hostname)
 
-source ${BASH_SOURCE}~asdf
 source ${BASH_SOURCE}~golang
 source ${BASH_SOURCE}~krew
 source ${BASH_SOURCE}~pass
-
+source ${BASH_SOURCE}~asdf
