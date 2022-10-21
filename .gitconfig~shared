@@ -57,7 +57,6 @@
 [rebase]
 	autostash = true
 [tag]
-	forceSignAnnotated = true
         sort = -v:refname
 [receive]
 	denyCurrentBranch = updateInstead

@@ -1,4 +1,4 @@
-[git-bug "bridge.jira-nxs"]
+[git-bug "bridge.nxs"]
 	target = jira
 	base-url = https://jira.nuxeo.com
 	project = NXS
