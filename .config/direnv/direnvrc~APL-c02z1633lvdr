@@ -1,5 +1,5 @@
 set -a
 HOST_DOCKER_INTERNAL=192.168.64.5
 HOST_K3S_INTERNAL=192.168.64.5
-DOCKER_HOST=tcp://${HOST_DOCKER_INTERNAL}:2375
+DOCKER_HOST=unix:///Users/nuxeo/.colima/docker.sock
 set +a

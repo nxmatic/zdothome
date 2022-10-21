@@ -8,9 +8,8 @@
 [alias]
 	dtf = "!git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 
-[commit]
-	gpgSign = true
-	
 [include]
 	path = ~/.gitconfig~shared
 	path = ~/.gitconfig~local
+[credential]
+	helper = store

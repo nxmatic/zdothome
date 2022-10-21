@@ -86,19 +86,19 @@ ZSH_CUSTOM=$DOTFILES/.oh-my-zsh~custom
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(history history-substring-search z zsh-dircolors-solarized)
 plugins+=(vscode gcloud)
-for cmd in asdf emacs bgnotify git gpg-agent kubectl brew; do
-  if [ -x "$(command -v $cmd)" ]; then
+for cmd in emacs bgnotify git gpg-agent kubectl brew; do
+  if [ -n "$(command -v $cmd)" ]; then
      plugins+=($cmd)
   else
     echo "$cmd missing"
   fi
 done
-if [ -x "$(command -v asdf)" ]; then
+if [ -n "$(command -v asdf)" ]; then
   plugins+=(asdf asdf-direnv asdf-java)
 else
-  [ -x "$(command -v direnv)" ] && plugins+=direnv
+  [ -n "$(command -v direnv)" ] && plugins+=direnv
 fi
-
+plugins+=(def-direnv)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -153,3 +153,4 @@ fi
 
 [ -f "${DOTFILES}/.zshrc~${os}" ] && source ${DOTFILES}/.zshrc~${os}
 [ -f "${DOTFILES}/.zshrc.$(hostname)" ] && source "${DOTFILES}/.zshrc.$(hostname)"
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
