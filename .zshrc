@@ -84,9 +84,9 @@ ZSH_CUSTOM=$DOTFILES/.oh-my-zsh~custom
 # Custom plugins may be added to ${DOTFILES-~}/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(history history-substring-search z zsh-dircolors-solarized)
+plugins=(history history-substring-search z zsh-dircolors-solarized bgnotify)
 plugins+=(vscode gcloud)
-for cmd in emacs bgnotify git gpg-agent kubectl brew; do
+for cmd in emacs git gpg-agent kubectl brew; do
   if [ -n "$(command -v $cmd)" ]; then
      plugins+=($cmd)
   else
@@ -98,7 +98,6 @@ if [ -n "$(command -v asdf)" ]; then
 else
   [ -n "$(command -v direnv)" ] && plugins+=direnv
 fi
-plugins+=(def-direnv)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -153,4 +152,4 @@ fi
 
 [ -f "${DOTFILES}/.zshrc~${os}" ] && source ${DOTFILES}/.zshrc~${os}
 [ -f "${DOTFILES}/.zshrc.$(hostname)" ] && source "${DOTFILES}/.zshrc.$(hostname)"
-source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
