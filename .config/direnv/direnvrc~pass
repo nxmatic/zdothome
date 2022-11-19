@@ -1,6 +1,6 @@
 [ -z "$(command -v pass)" ] && return
 
-set -xa
-source <(pass nuxeo/nexus/dot-envrc)
+set -a
+source <(pass nuxeo/nos/dot-envrc.sh|$SHELL)
 source <(pass coding/github@nuxeo-token| tail +2 | yq eval .env -)
-set +xa
+set +a
