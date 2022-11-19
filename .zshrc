@@ -148,8 +148,8 @@ fi
 
 [ -f ${DOTFILES}/.fzf.zsh ] && source ${DOTFILES}/.fzf.zsh
 
-[ -d ${XDG_RUNTIME_DIR}/org.dystroy.broot ] && source ${XDG_RUNTIME_DIR}/org.dystroy.broot/launcher/bash/1
-
 [ -f "${DOTFILES}/.zshrc~${os}" ] && source ${DOTFILES}/.zshrc~${os}
 [ -f "${DOTFILES}/.zshrc.$(hostname)" ] && source "${DOTFILES}/.zshrc.$(hostname)"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
+
+source /Users/nxmatic/.config/broot/launcher/bash/br
