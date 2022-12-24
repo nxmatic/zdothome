@@ -1,3 +1,4 @@
+set -x
 use asdf
 
 source_if_exists() {
@@ -21,4 +22,5 @@ source_if_exists ${BASH_SOURCE}~$(hostname)
 
 source ${BASH_SOURCE}~golang
 source ${BASH_SOURCE}~krew
-source ${BASH_SOURCE}~pass
+#source ${BASH_SOURCE}~pass
+set +x

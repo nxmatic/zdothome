@@ -102,6 +102,8 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+unsetopt autopushd
+
 export USER_EMACS_DIRECTORY=.emacs.d/userland
 
 export GROOVY_HOME=/usr/local/opt/groovy/libexec
@@ -147,9 +149,9 @@ fi
 [ ! -f ${DOTFILES}/.p10k.zsh ] || source ${DOTFILES}/.p10k.zsh
 
 [ -f ${DOTFILES}/.fzf.zsh ] && source ${DOTFILES}/.fzf.zsh
+[ -f ${DOTFILES}/.nix.zsh ] && source ${DOTFILES}/.nix.zsh
 
 [ -f "${DOTFILES}/.zshrc~${os}" ] && source ${DOTFILES}/.zshrc~${os}
 [ -f "${DOTFILES}/.zshrc.$(hostname)" ] && source "${DOTFILES}/.zshrc.$(hostname)"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
-
-source /Users/nxmatic/.config/broot/launcher/bash/br
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/broot/br" ] && source "${XDG_CONFIG_HOME:-$HOME}/.config}/broot/launcher/bash/br"
