@@ -154,4 +154,4 @@ fi
 [ -f "${DOTFILES}/.zshrc~${os}" ] && source ${DOTFILES}/.zshrc~${os}
 [ -f "${DOTFILES}/.zshrc.$(hostname)" ] && source "${DOTFILES}/.zshrc.$(hostname)"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/broot/br" ] && source "${XDG_CONFIG_HOME:-$HOME}/.config}/broot/launcher/bash/br"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/broot/launcher/bash/br" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/broot/launcher/bash/br"

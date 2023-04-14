@@ -1,0 +1,8 @@
+[core]
+account = slacoin@nuxeo.com
+project = build-jx-prod
+disable_usage_reporting = False
+
+[compute]
+region = us-east1-b
+
