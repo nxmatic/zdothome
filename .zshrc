@@ -1,11 +1,8 @@
-: ${OS:=$(uname)}
-: ${DOTFILES:=$(dirname $(realpath ${(%):-%N}))}
+echo "loading zshrc"
 
-if [ -f ${DOTFILES}/.dotfiles.zsh ]; then
-  source ${DOTFILES}/.dotfiles.zsh
-fi
+source_if_exists "${DOTFILES}/.dotfiles.zsh"
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ${DOTFILES-~}/.zshrc.
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ${DOTFILES}/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -14,7 +11,7 @@ fi
 
 
 # Path to your oh-my-zsh installation.
-export ZSH="${DOTFILES-~}/.oh-my-zsh"
+export ZSH="${DOTFILES}/.oh-my-zsh"
 
 if [ ! -d $ZSH ]; then
   git clone https://github.com/ohmyzsh/ohmyzsh.git $ZSH
@@ -31,7 +28,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ${DOTFILES-~}/.oh-my-zsh/themes/
+# a theme from this variable instead of looking in ${DOTFILES}/.oh-my-zsh/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
@@ -77,15 +74,15 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-ZSH_CUSTOM=$DOTFILES/.oh-my-zsh~custom
+ZSH_CUSTOM=${DOTFILES}/.oh-my-zsh~custom
 
 # Which plugins would you like to load?
-# Standard plugins can be found in ${DOTFILES-~}/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ${DOTFILES-~}/.oh-my-zsh/custom/plugins/
+# Standard plugins can be found in ${DOTFILES}/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ${DOTFILES}/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(history history-substring-search z zsh-dircolors-solarized bgnotify)
-plugins+=(vscode gcloud)
+plugins+=(asdf vscode gcloud)
 for cmd in emacs git gpg-agent kubectl brew; do
   if [ -n "$(command -v $cmd)" ]; then
      plugins+=($cmd)
@@ -139,19 +136,17 @@ export PATH=${HOME}/.krew/bin:${HOME}/.bin:$PATH
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# To customize prompt, run `p10k configure` or edit ${DOTFILES-~}/.p10k.zsh.
+# To customize prompt, run `p10k configure` or edit ${DOTFILES}/.p10k.zsh.
 
 if [ -n "$VSCODE" -a "$VSCODE" = "code-insiders" ]; then
     alias code="code-insiders"
     alias devcontainer="devcontainer-insiders"
 fi
 
-[ ! -f ${DOTFILES}/.p10k.zsh ] || source ${DOTFILES}/.p10k.zsh
+source_if_exists § ${DOTFILES}/.p10k.zsh
 
-[ -f ${DOTFILES}/.fzf.zsh ] && source ${DOTFILES}/.fzf.zsh
-[ -f ${DOTFILES}/.nix.zsh ] && source ${DOTFILES}/.nix.zsh
+source_if_exists ${DOTFILES}/.fzf.zsh
+source_if_exists ${DOTFILES}/.nix.zsh
 
-[ -f "${DOTFILES}/.zshrc~${os}" ] && source ${DOTFILES}/.zshrc~${os}
-[ -f "${DOTFILES}/.zshrc.$(hostname)" ] && source "${DOTFILES}/.zshrc.$(hostname)"
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/broot/launcher/bash/br" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/broot/launcher/bash/br"
+source_if_exists ${XDG_CONFIG_HOME}/asdf-direnv/zshrc
+source_if_exists ${XDG_CONFIG_HOME}/broot/launcher/bash/br
