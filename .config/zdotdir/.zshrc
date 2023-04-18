@@ -1,6 +1,8 @@
 #!/bin/zsh
 ##? .zshrc - Run on interactive Zsh session.
 
+echo loading zdotdir
+
 # load zprof first if we need to profile
 [[ ${ZPROFRC:-0} -eq 0 ]] || zmodload zsh/zprof
 alias zprofrc="ZPROFRC=1 zsh"
@@ -13,8 +15,8 @@ autoload -Uz $fpath[1]/*(.:t)
 # get minmalist zsh_unplugged plugin manager
 [[ -d $ZDOTDIR/.unplugged ]] ||
   git clone git@github.com:mattmc3/zsh_unplugged $ZDOTDIR/.unplugged
-#source $ZDOTDIR/.unplugged/zsh_unplugged.zsh
-source ~/Projects/mattmc3/zsh_unplugged/zsh_unplugged.zsh
+source $ZDOTDIR/.unplugged/zsh_unplugged.zsh
+#source ~/Projects/mattmc3/zsh_unplugged/zsh_unplugged.zsh
 
 # clone-only plugins
 path+=$ZUNPLUG_REPOS/romkatv/zsh-bench
