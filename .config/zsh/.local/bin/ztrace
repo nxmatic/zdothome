@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+: ${ZDOTDIR:=~/.config/zsh}
+
+source ${ZDOTDIR}/.zshrc
+ztrace ${1:-status}

@@ -1,0 +1,10 @@
+##? conf.d - Use a Fish-like conf.d directory for sourcing configs.
+
+local rcfiles=( ${1:-"${ZDOTDIR}/conf.d"}/*.{z,}sh(N) )
+local rcfile
+
+for rcfile in rcfiles; do
+  # ignore files that begin with ~
+  case ${rcfile:t} in '~'*) ;; *'~') continue;; esac
+  source "${rcfile}"
+done

@@ -1,0 +1,5 @@
+dtfsh <<!
+git fetch
+!
+
+@zrunparts ${0:h:a} update

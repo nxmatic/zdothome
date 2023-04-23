@@ -1,7 +1,0 @@
-[[ ( "$SHLVL" -gt 1 || ! -o LOGIN ) ]] && return 0 # load only once
-
-[[ ! -s "${file:=}" ]] && echo "cannot load profile '${file}'" 1>&2 && return 1
-
-source ${file}
-
-

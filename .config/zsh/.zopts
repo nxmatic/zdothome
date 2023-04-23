@@ -1,0 +1,17 @@
+#!/bin/env zsh
+
+# override zshzoo/directory zsh opts
+
+override_zshzoo_directory() {
+    local zopts=(
+	no_auto_cd
+	no_auto_pushd
+        pushd_ignore_dups
+	clobber
+    )
+    setopt $zopts
+}
+
+override_zshzoo_directory && unset -f override_zshzoo_directory
+
+# ...

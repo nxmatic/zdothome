@@ -1,0 +1,1 @@
+alias _functrace 'set +x && TRAPEXIT() { set +x }'

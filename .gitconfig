@@ -15,3 +15,5 @@
 	helper = store
 [commit]
 	gpgsign = true
+[core]
+	excludesfile = /Users/stephane.lacoin/.gitignore
