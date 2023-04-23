@@ -6,7 +6,7 @@
 	signingKey = A7817A295C58D560!
 
 [alias]
-	dtf = "!git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+	dtf = "!git --git-dir=$XDG_DATA_HOME/dotfiles.git --work-tree=$HOME"
 
 [include]
 	path = ~/.gitconfig~shared
