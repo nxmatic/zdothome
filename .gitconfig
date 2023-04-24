@@ -3,7 +3,7 @@
 	email = stephane.lacoin@gmail.com
 	username = nxmatic
 	avatarUrl = http://www.gravatar.com/avatar/b8f28b055e33e24331a2500399e71532.jpg?s=1
-	signingKey = EF978BF0085F6F546721B9AD074DF25347508C66
+	signingKey = A7817A295C58D560!
 
 [alias]
 	dtf = "!git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
@@ -13,3 +13,5 @@
 	path = ~/.gitconfig~local
 [credential]
 	helper = store
+[commit]
+	gpgsign = true

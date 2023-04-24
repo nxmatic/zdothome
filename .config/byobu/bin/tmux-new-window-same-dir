@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# tmux-new-window-same-dir - open a new window in the same directory as the current one
+
+# get current directory
+curdir=$(tmux display-message -p '#{pane_current_path}')
+
+# open new window in same directory
+tmux new-window -c "$curdir"
