@@ -56,6 +56,7 @@ my_plugins=(
   ohmyzsh/ohmyzsh/plugins/copyfile
   ohmyzsh/ohmyzsh/plugins/copypath
   ohmyzsh/ohmyzsh/plugins/copybuffer
+  ohmyzsh/ohmyzsh/plugins/emacs
   ohmyzsh/ohmyzsh/plugins/gitfast     # p10k requirement
   ohmyzsh/ohmyzsh/plugins/magic-enter
   ohmyzsh/ohmyzsh/plugins/fancy-ctrl-z
@@ -78,9 +79,9 @@ my_plugins=(
   mattmc3/zephyr/plugins/utility
 
   # local plugins
-#  python
+  # python
   powerlevel10k
-#  prompt
+  # prompt
 
   # completion
   sorin-ionescu/prezto/modules/completion

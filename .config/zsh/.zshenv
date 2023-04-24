@@ -1,7 +1,19 @@
-#!/bin/zsh
-##? .zshenv - Zsh environment file, loaded always.
+set -ae
 
-export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
-export XDG_DATA_HOME=${XDG_DATA_HOME:-~/.local/share}
-export ZDOTDIR=${ZDOTDIR:-$XDG_CONFIG_HOME/zsh}
-export ZSH_THEME=${ZDOTDIR}/.p10k.zsh
+# xdg defaults required
+
+: ${XDG_DATA_HOME:=${HOME}/.local/share}
+
+# gnupg
+
+: ${GNUPGHOME:=${XDG_DATA_HOME}/gnupg} &&
+: ${SSH_AUTH_SOCK:=$(gpgconf --list-dirs agent-ssh-socket)}
+
+# zdot
+
+: ${ZDOTGIT:=${XDG_DATA_HOME}/zdot.git}
+: ${ZDOTDIR:=${0:a:h}}
+: ${ZSH_THEME:=nxmatic}
+
+set +ae
+ 

@@ -1,0 +1,35 @@
+# use plugin options
+emulate -L zsh
+setopt local_options
+setopt extended_glob warn_create_global typeset_silent \
+       no_short_loops rc_quotes no_auto_pushd numeric_glob_sort \
+       null_glob err_exit
+
+# ensure plugin context available
+declare -Ax zhost
+: ${zhost[uname]:=$(uname)}
+: ${zhost[hostname]:=$(hostname)}
+
+local file=${1:-.}
+
+[[ -r ${file} ]] || return # should be able to source the file
+
+local dirpath=${file:A:h:q}
+local filename=${file:t:q}
+local ext=${filename:e}
+
+local basename=${filename:r:q}
+local trail=""
+
+if [[ -n "${ext}" ]]; then
+  if [[ -n "${basename}" ]]; then
+    trail=${ext:q}
+  else
+    basename=${filename:q}
+  fi
+fi
+
+local expr="${dirpath}/${basename}\~(${(j:|:)zhost})${trail}"
+local -a paths=( ${~expr} )
+
+_zsh_host_reply=( ${paths[@]} )

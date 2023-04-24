@@ -5,12 +5,11 @@
 	avatarUrl = http://www.gravatar.com/avatar/b8f28b055e33e24331a2500399e71532.jpg?s=1
 	signingKey = A7817A295C58D560!
 
-[alias]
-	dtf = "!git --git-dir=$XDG_DATA_HOME/dotfiles.git --work-tree=$HOME"
-
 [include]
+	path = ~/.gitconfig~dotfiles
 	path = ~/.gitconfig~shared
 	path = ~/.gitconfig~local
+
 [credential]
 	helper = store
 [commit]

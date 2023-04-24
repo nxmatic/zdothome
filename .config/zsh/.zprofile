@@ -1,6 +1,9 @@
-exec 3>&2 2>/tmp/zprofile~zdotdir &&
-  : ${0} $(pwd) &&
-  set +x
+{
+  setopt local_options
 
-set +x &&
-  exec 2>&3 3>&-
+  fpath+=(${ZDOTDIR}/functions)
+
+  autoload -Uz zsh_host_source
+
+  zsh_host_source ${ZDOTDIR}/.zprofile
+}
