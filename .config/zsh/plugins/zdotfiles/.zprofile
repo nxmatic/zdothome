@@ -1,30 +1,9 @@
-#!/usr/bin/env zsh -x
-
-source_if_exists() {
-  [ -f "${1}" ] && source "${1}"
-}
-
-alias dtfsh="env PS1=\"dtfsh> \" GIT_WORK_TREE=\"\${DOTFILES}\" GIT_DIR=\"\${DOTFILES}/.dotfiles.git\" zsh -d -f -x"
-
-# Installation script (Bash) for https://github.com/nxmatic/dotfiles
-
-if [ -z "${DOTFILES}" ]; then
-    if [ -h /bin/ls ] && expr "$(readlink /bin/ls)" = '/bin/busybox' > /dev/null; then
-        apk add coreutils
-        [ -x /usr/bin/rsync ] || apk add rsync
-    fi
-    export DOTFILES="$(realpath ${HOME})"
-fi
-
-setopt aliases
-
 # TODO: giconfigure sparse checkout based on os/flavors
 
 dtfsh <<!
-$(whence -f source_if_exists) # reload function
 
 if [ ! -d "\${GIT_DIR}" ]; then
-    tmpdir=\$(mktemp -d "${DOTFILES}/$(basename $0).XXXXX") && trap "rm -fr \"\${tmpdir}\"" 0
+    tmpdir=\$(mktemp -d "${DOTFILES_DIR}/$(basename $0).XXXXX") && trap "rm -fr \"\${tmpdir}\"" 0
     git_work_tree=\${tmpdir}/tree
 
     git clone --quiet --bare https://github.com/nxmatic/dotfiles "\${GIT_DIR}" 

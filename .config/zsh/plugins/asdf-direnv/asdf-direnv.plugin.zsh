@@ -1,4 +1,4 @@
-asdf plugin-list | grep -q direnv || return
+asdf plugin list | grep -q direnv || return
 
 # Hook direnv into your shell.
 eval "$(asdf exec direnv hook zsh)"

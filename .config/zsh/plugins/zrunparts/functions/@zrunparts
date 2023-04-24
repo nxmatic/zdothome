@@ -1,0 +1,36 @@
+##? conf.d - Use a Fish-like conf.d directory for sourcing configs.
+## zsh
+
+: ${1:="${ZDOTDIR}"}
+: ${2:="conf"}
+
+local rcdir=${1}/${2}.d
+local fnpattern="@runparts-${2}-*"
+
+: ${uname:-$(uname)}
+: ${hostname:-$(hostname)}
+
+rcfiles=( ${rcdir}/*.{z,}sh(N) )
+# load files
+local -a rcfiles=( ${rcdir}/*.{z,}sh(N) )
+local rcfile=
+local unameCase="*-${uname}.zsh"
+local hostnameCase="*-${hostname}.zsh"
+local anyPattern="*-*.zsh"
+for rcfile in ${rcfiles}; do
+  # ignore files that begin with ~
+  case ${rcfile:t} in
+    "${unameCase}") ;;
+    "${hostnameCase}") ;;
+    "${anyPattern}") continue;;
+    "~*") continue;;
+  esac
+  source "${rcfile}"
+done
+
+# call rc functions
+local rcfuncs=( "$(whence -wm '${fnpattern}')" )
+local rcfunc
+for rcfunc in $rcfuncs; do
+  eval $(rcfunc)
+done
