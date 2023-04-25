@@ -8,8 +8,6 @@ fpath+=~/.local/share/zsh_unplugged/zshzoo/macos
 source ~/.local/share/zsh_unplugged/zshzoo/macos/macos.plugin.zsh
 fpath+=~/.local/share/zsh_unplugged/ohmyzsh/ohmyzsh/lib
 source ~/.local/share/zsh_unplugged/ohmyzsh/ohmyzsh/lib/clipboard.zsh
-fpath+=~/.local/share/zsh_unplugged/ohmyzsh/ohmyzsh/lib
-source ~/.local/share/zsh_unplugged/ohmyzsh/ohmyzsh/lib/git.zsh
 fpath+=~/.local/share/zsh_unplugged/ohmyzsh/ohmyzsh/plugins/copyfile
 source ~/.local/share/zsh_unplugged/ohmyzsh/ohmyzsh/plugins/copyfile/copyfile.plugin.zsh
 fpath+=~/.local/share/zsh_unplugged/ohmyzsh/ohmyzsh/plugins/copypath
@@ -18,14 +16,20 @@ fpath+=~/.local/share/zsh_unplugged/ohmyzsh/ohmyzsh/plugins/copybuffer
 source ~/.local/share/zsh_unplugged/ohmyzsh/ohmyzsh/plugins/copybuffer/copybuffer.plugin.zsh
 fpath+=~/.local/share/zsh_unplugged/ohmyzsh/ohmyzsh/plugins/emacs
 source ~/.local/share/zsh_unplugged/ohmyzsh/ohmyzsh/plugins/emacs/emacs.plugin.zsh
-fpath+=~/.local/share/zsh_unplugged/ohmyzsh/ohmyzsh/plugins/gitfast
-source ~/.local/share/zsh_unplugged/ohmyzsh/ohmyzsh/plugins/gitfast/gitfast.plugin.zsh
 fpath+=~/.local/share/zsh_unplugged/ohmyzsh/ohmyzsh/plugins/magic-enter
 source ~/.local/share/zsh_unplugged/ohmyzsh/ohmyzsh/plugins/magic-enter/magic-enter.plugin.zsh
 fpath+=~/.local/share/zsh_unplugged/ohmyzsh/ohmyzsh/plugins/fancy-ctrl-z
 source ~/.local/share/zsh_unplugged/ohmyzsh/ohmyzsh/plugins/fancy-ctrl-z/fancy-ctrl-z.plugin.zsh
 fpath+=~/.local/share/zsh_unplugged/ohmyzsh/ohmyzsh/plugins/extract
 source ~/.local/share/zsh_unplugged/ohmyzsh/ohmyzsh/plugins/extract/extract.plugin.zsh
+fpath+=~/.local/share/zsh_unplugged/ohmyzsh/ohmyzsh/plugins/asdf
+source ~/.local/share/zsh_unplugged/ohmyzsh/ohmyzsh/plugins/asdf/asdf.plugin.zsh
+fpath+=~/.local/share/zsh_unplugged/ohmyzsh/ohmyzsh/plugins/fzf
+source ~/.local/share/zsh_unplugged/ohmyzsh/ohmyzsh/plugins/fzf/fzf.plugin.zsh
+fpath+=~/.local/share/zsh_unplugged/ohmyzsh/ohmyzsh/lib
+source ~/.local/share/zsh_unplugged/ohmyzsh/ohmyzsh/lib/git.zsh
+fpath+=~/.local/share/zsh_unplugged/ohmyzsh/ohmyzsh/plugins/gitfast
+source ~/.local/share/zsh_unplugged/ohmyzsh/ohmyzsh/plugins/gitfast/gitfast.plugin.zsh
 fpath+=~/.local/share/zsh_unplugged/romkatv/powerlevel10k
 source ~/.local/share/zsh_unplugged/romkatv/powerlevel10k/powerlevel10k.zsh-theme
 fpath+=~/.local/share/zsh_unplugged/sorin-ionescu/prezto/modules/terminal
@@ -40,8 +44,6 @@ fpath+=~/.local/share/zsh_unplugged/mattmc3/zephyr/plugins/homebrew
 source ~/.local/share/zsh_unplugged/mattmc3/zephyr/plugins/homebrew/homebrew.plugin.zsh
 fpath+=~/.local/share/zsh_unplugged/mattmc3/zephyr/plugins/utility
 source ~/.local/share/zsh_unplugged/mattmc3/zephyr/plugins/utility/utility.plugin.zsh
-fpath+=~/.config/zsh/plugins/powerlevel10k
-source ~/.config/zsh/plugins/powerlevel10k/powerlevel10k-plugin.zsh
 fpath+=~/.local/share/zsh_unplugged/sorin-ionescu/prezto/modules/completion
 source ~/.local/share/zsh_unplugged/sorin-ionescu/prezto/modules/completion/init.zsh
 fpath+=~/.config/zsh

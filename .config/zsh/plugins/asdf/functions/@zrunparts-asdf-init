@@ -1,4 +1,0 @@
-plugins=( ${(f)"$(<${XDG_CONFIG_HOME}/asdf/plugins)"} )
-for plugin in $(plugins); do
-  asdf plugin add $(plugin)
-done

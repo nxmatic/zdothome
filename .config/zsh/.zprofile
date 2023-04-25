@@ -1,9 +1,4 @@
-{
-  setopt local_options
+#! /usr/bin/env zsh
+# -*- mode: sh; sh-shell: zsh; -*-
 
-  fpath+=(${ZDOTDIR}/functions)
-
-  autoload -Uz zsh_host_source
-
-  zsh_host_source ${ZDOTDIR}/.zprofile
-}
+zsh_rcload ${ZDOTDIR}/.zprofile.d

@@ -1,2 +1,4 @@
 term  screen-256color
 shell zsh
+compacthist on
+scrollback 6096

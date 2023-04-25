@@ -1,1 +1,0 @@
-asdf plugin list --urls > ${XDG_CONFIG_HOME}/asdf/plugins
