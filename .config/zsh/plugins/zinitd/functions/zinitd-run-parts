@@ -1,3 +1,0 @@
-##? conf.d - Use a Fish-like conf.d directory for sourcing configs.
-
-typeset -a zinits=( ${(@)$(whence -wm 'zinit-*')} )

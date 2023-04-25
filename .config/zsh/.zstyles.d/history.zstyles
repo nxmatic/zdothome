@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+#
+# History
+#
+
+zstyle ':prezto:module:history' histfile ${XDG_CACHE_HOME:=$HOME/.local/var/cache}/zsh/history

@@ -1,0 +1,4 @@
+term  xterm-kitty
+shell zsh
+compacthist on
+scrollback 6096

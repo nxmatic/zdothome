@@ -1,2 +1,1 @@
-term  screen-256color
-shell zsh
+.config/byobu/.screenrc

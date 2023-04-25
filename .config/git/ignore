@@ -1,0 +1,17 @@
+# local folders
+.local
+
+# binaries
+*.zwc
+*.sock
+
+# git credentials
+.git-credentials
+
+# temp files
+\#*
+.\#*
+*~
+*~back
+*.back
+#*

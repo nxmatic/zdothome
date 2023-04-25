@@ -1,0 +1,20 @@
+[user]
+	name = Stephane Lacoin (aka nxmatic)
+	email = stephane.lacoin@gmail.com
+	username = nxmatic
+	avatarUrl = http://www.gravatar.com/avatar/b8f28b055e33e24331a2500399e71532.jpg?s=1
+	signingKey = A7817A295C58D560!
+
+[include]
+	path = config.d/dotfiles
+	path = config.d/shared
+	path = config.d/local
+
+[credential]
+	helper = store -file=${XDG_DATA_DIR}/git-credentials
+
+[commit]
+	gpgsign = false
+
+[core]
+	excludesfile = /Users/stephane.lacoin/.gitignore

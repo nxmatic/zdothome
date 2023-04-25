@@ -1,19 +1,17 @@
-set -ae
+[[ -n "${_zdotenv}" ]] &&
+    echo "zshenv already loaded" >&2 &&
+    print -l ${path} &&
+    return 1
 
-# xdg defaults required
+_zdotenv=${XDG_CONFIG_HOME:-${HOME}/.config}/zsh/.zshenv.d
 
-: ${XDG_DATA_HOME:=${HOME}/.local/share}
+function {
 
-# gnupg
+    # bootstrap
 
-: ${GNUPGHOME:=${XDG_DATA_HOME}/gnupg} &&
-: ${SSH_AUTH_SOCK:=$(gpgconf --list-dirs agent-ssh-socket)}
+    setopt local_options all_export &&
+      source ${_zdotenv}/zdot.zshenv &&
+      zsh_rcload ${_zdotenv}
+}
 
-# zdot
-
-: ${ZDOTGIT:=${XDG_DATA_HOME}/zdot.git}
-: ${ZDOTDIR:=${0:a:h}}
-: ${ZSH_THEME:=nxmatic}
-
-set +ae
- 
+unset _zdotenv

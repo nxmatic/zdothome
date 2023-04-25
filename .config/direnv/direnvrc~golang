@@ -1,4 +1,4 @@
-[ -z "$GOPATH" ] && return
+[ -z "${GOPATH:-}" ] && return
 
 set -a
 PATH=$(path $GOPATH)
