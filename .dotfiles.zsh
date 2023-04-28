@@ -1,10 +1,12 @@
 #!/usr/bin/env zsh
 
-set -x
+alias dtfsh="env PS1=\"dtfsh> \" GIT_WORK_TREE=\"\$DOTFILES\" GIT_DIR=\"\$DOTFILES/.dotfiles.git\" zsh -d -f"
 
 # Installation script (Bash) for https://github.com/nxmatic/dotfiles
 
 [ -n "$DOTFILES" ] && return
+
+set -x
 
 export DOTFILES=$(realpath $HOME)
 
@@ -15,7 +17,6 @@ fi
 
 setopt aliases
 
-alias dtfsh="env PS1=\"dtfsh> \" GIT_WORK_TREE=\"$DOTFILES\" GIT_DIR=\"$DOTFILES/.dotfiles.git\" zsh -d -f"
 dtfsh -x <<EOF
 if [ ! -d "\$GIT_DIR" ]; then
     tmpfile=\$(mktemp -d $(basename $0).XXXXX) # && trap 0 "rm -fr \$tmpfile"

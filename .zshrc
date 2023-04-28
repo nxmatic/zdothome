@@ -15,6 +15,10 @@ if [ ! -d $ZSH ]; then
   git clone https://github.com/ohmyzsh/ohmyzsh.git $ZSH
 fi
 
+# set vscode insider as preferred
+
+VSCODE=code-insiders
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -77,18 +81,19 @@ ZSH_CUSTOM=$HOME/.oh-my-zsh~custom
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 if [ -n "$ZSH_PLUGINS" ]; then
-
-  plugins=(history history-substring-search vscode z)
-
-  for cmd in asdf emacs bgnotify git gpg-agent kubectl brew gcloud; do
-    [ -x "$(command -v $cmd)" ]   && plugins += ($cmd)|| echo "$(cmd) missing"
-  done
-
-  [ -x "$(command -v asdf)" ] && plugins += (asdf asdf-direnv) || "asdf and asdf-direnv missing"
-  [ -x "$(command -v code)" ] && plugins += (code)
-  export ZSH_PLUGINS = $plugins
-else
   plugins=$ZSH_PLUGINS
+else
+  plugins=(history history-substring-search vscode z zsh-dircolors-solarized)
+  for cmd in asdf emacs bgnotify git gpg-agent kubectl brew gcloud; do
+    if [ -x "$(command -v $cmd)" ]; then
+       plugins+=($cmd)
+    else
+      echo "$cmd missing"
+    fi
+  done
+  [ -x "$(command -v asdf)" ] && plugins+=(asdf asdf-direnv asdf-java)
+
+  export ZSH_PLUGINS=$plugins
 fi
 
 source $ZSH/oh-my-zsh.sh
@@ -143,4 +148,4 @@ export PATH=${HOME}/.krew/bin:${HOME}/.bin:$PATH
 
 [ -d ~/.config/broot ] && source ~/.config/broot/launcher/bash/br
 
-[ -f ~/.dotfiles.sh ] && source ~/.dotfiles.zsh
+[ -f ~/.dotfiles.zsh ] && source ~/.dotfiles.zsh
