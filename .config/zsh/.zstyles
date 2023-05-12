@@ -1,7 +1,0 @@
-#!/bin/zsh
-#
-#
-# .zstyles - Zsh customization.
-#
-
-zsh_rcload ${ZDOTDIR}/.zstyles.d

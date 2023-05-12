@@ -25,7 +25,7 @@
 # upstream = 
 [core]
 	autocrlf = false
-	excludesfile = ~/.gitexclude
+	excludesfile = ${XDG_CONFIG_HOME}/git/exclude
 	pager = less -+F -X
 [diff]
 	mnemonicprefix = true

@@ -1,7 +1,0 @@
-[[ -n "${POWERLEVEL9K_CONFIG_FILE}" ]] && \
-  prompt_p10k_setup && \
-  return
-command -v starship &>/dev/null 2>/dev/null  && \
-  prompt_hydro_setup && \
-  return
-
