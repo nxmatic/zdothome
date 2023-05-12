@@ -1,3 +1,0 @@
-#!/bin/zsh
-
-zstyle -a ':zsh_custom:plugins' load 'my_plugins'

@@ -1,2 +1,0 @@
-0=${(%):-%x}
-source "${0:A:h:h}/themes/p10k-${1:-nxmatic}.zsh-theme"

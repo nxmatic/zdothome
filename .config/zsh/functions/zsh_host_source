@@ -1,9 +1,0 @@
-autoload -Uz zsh_host_files
-
-local -a _zsh_host_reply=()
-
-zsh_host_files ${1}
-
-for file in ${_zsh_host_reply}; do
-    source ${file}
-done

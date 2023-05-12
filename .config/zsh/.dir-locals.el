@@ -1,5 +1,0 @@
-((nil . ((indent-tabs-mode . nil)
-	 (c-basic-offset . 2)
-	 (tab-width 2)
-	 (fill-column . 132)
-	 (mode . shell-script-mode)))
